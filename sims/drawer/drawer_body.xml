@@ -1,0 +1,42 @@
+<mujocoinclude>
+    <body childclass="drawer_base">
+        <body name="drawercase_link" pos="0 0 0.084">
+            <geom material="drawer_beige" mesh="drawercase"/>
+            <!-- wall left -->
+            <geom class="drawer_col" pos="-0.2 0 0" size="0.012 0.15 0.084" type="box" mass=".05"/>
+            <!-- wall right -->
+            <geom class="drawer_col" pos="0.2 0 0" size="0.012 0.15 0.084" type="box" mass=".05"/>
+            <!-- wall back -->
+            <geom class="drawer_col" pos="0 0.2 -0.008" size="0.153 0.012 0.076" type="box" mass=".05"/>
+            <!-- wall  bottom -->
+            <geom class="drawer_col" pos="0 -0.008 -0.07" size="0.153 0.12 0.014" type="box" mass=".05"/>
+            <!-- wall top -->
+            <!-- <geom class="drawer_col" pos="0 0 0.076" size="0.102 0.1 0.008" type="box" mass=".05"/> -->
+            
+            <body name="drawer_link" pos="0 -0.01 0.006">
+                <joint type="slide" range="-0.16 0" axis="0 1 0" name="goal_slidey" pos="0 0 0" damping="2"/>
+                <geom material="drawer_beige" mesh="drawer"/>
+                <geom material="drawer_white" mesh="drawerhandle" pos="0 -0.114 0" name="objGeom"/>
+                
+                <!-- drawer  front -->
+                <geom class="drawer_col" pos="0 -0.12 0.008" size="0.15 0.012 0.052" type="box" mass=".04"/>
+                <!-- drawer  back -->
+                <geom class="drawer_col" pos="0 0.124 0.008" size="0.15 0.012 0.052" type="box" mass=".04"/>
+                <!-- drawer  left -->
+                <geom class="drawer_col" pos="-0.138 0 0.008" size="0.012 0.111 0.052" type="box" mass=".04"/>
+                <!-- drawer  right -->
+                <geom class="drawer_col" pos="0.138 0 0.008" size="0.012 0.111 0.052" type="box" mass=".04"/>
+                <!-- drawer  bottom -->
+                <geom class="drawer_col" pos="0 0 -0.052" size="0.15 0.135 0.008" type="box" mass=".04"/>
+                
+                <!--  handle left -->
+                <geom class="drawer_col" euler="1.571 0 0" pos="-0.07 -0.14 0.0" size="0.009 0.03" type="capsule" mass=".06"/>
+                <!-- handle  front -->
+                <geom class="drawer_col" euler="0 1.57 0" pos="0 -0.18 0" size="0.012 0.07" type="capsule" mass=".06"/>
+                <!-- handle  right -->
+                <geom class="drawer_col" euler="1.57 0 0" pos="0.07 -0.14 0" size="0.009 0.03" type="capsule" mass=".06"/>
+            
+            </body>
+        </body>
+    </body>
+</mujocoinclude>

@@ -1,0 +1,33 @@
+<mujocoinclude>
+    <compiler angle="radian" inertiafromgeom="auto" inertiagrouprange="4 5"/>
+    <asset>
+      <texture name="T_slide_metal" type="cube" height="1" width="1" file="../furniture_sim/common/textures/metal2.png"/>
+      <texture name="drawer_text" type="cube" height="1" width="1" file="../furniture_sim/common/textures/wood1.png"/> 
+      <material name="drawer_col" texture="drawer_text" texrepeat="3 3" reflectance="0.7" shininess=".4" texuniform="false"/>
+      <material name="drawer_red" texture="drawer_text" texrepeat="3 3" reflectance="0.7" shininess=".4" texuniform="false"/>
+      <material name="drawer_white" texture="T_slide_metal" texrepeat="3 3" reflectance="0.7" shininess=".4" texuniform="false"/>
+      <material name="drawer_beige" texture="drawer_text" texrepeat="3 3" reflectance="0.7" shininess=".4" texuniform="false"/>
+
+    </asset>
+    <default>
+
+      <default class="drawer_base">
+          <joint armature="0.001" damping="2" limited="true"/>
+          <geom conaffinity="0" contype="0" group="1" type="mesh"/>
+          <position ctrllimited="true" ctrlrange="0 1.57"/>
+          <default class="drawer_viz">
+              <geom condim="4" type="mesh"/>
+          </default>
+          <default class="drawer_col">
+              <geom conaffinity="1" condim="3" contype="1" group="4"  solimp="0.99 0.99 0.01" solref="0.01 1"/>
+          </default>
+      </default>
+    </default>
+
+    <asset>
+        <mesh file="../furniture_sim/drawer/drawer.stl" name="drawer" scale="1.5 1.5 1"/>
+        <mesh file="../furniture_sim/drawer/drawercase.stl" name="drawercase" scale="1.5 1.5 1"/>
+        <mesh file="../furniture_sim/drawer/drawerhandle.stl" name="drawerhandle" scale="1.5 1.5 1"/>
+    </asset>
+
+</mujocoinclude>
