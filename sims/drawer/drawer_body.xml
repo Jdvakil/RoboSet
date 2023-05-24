@@ -35,7 +35,7 @@
                 <geom class="drawer_col" euler="0 1.57 0" pos="0 -0.18 0" size="0.012 0.07" type="capsule" mass=".06"/>
                 <!-- handle  right -->
                 <geom class="drawer_col" euler="1.57 0 0" pos="0.07 -0.14 0" size="0.009 0.03" type="capsule" mass=".06"/>
-            
+                <site name="drawer" size="0.01" pos = "0 0 0" rgba="0 1 0.4 1"/>
             </body>
         </body>
     </body>
