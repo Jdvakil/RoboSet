@@ -25,9 +25,9 @@
     </default>
 
     <asset>
-        <mesh file="../furniture_sim/drawer/drawer.stl" name="drawer" scale="1.5 1.5 1"/>
-        <mesh file="../furniture_sim/drawer/drawercase.stl" name="drawercase" scale="1.5 1.5 1"/>
-        <mesh file="../furniture_sim/drawer/drawerhandle.stl" name="drawerhandle" scale="1.5 1.5 1"/>
+        <mesh file="../sim/drawer/drawer.stl" name="drawer" scale="1.5 1.5 1"/>
+        <mesh file="../sim/drawer/drawercase.stl" name="drawercase" scale="1.5 1.5 1"/>
+        <mesh file="../sim/drawer/drawerhandle.stl" name="drawerhandle" scale="1.5 1.5 1"/>
     </asset>
 
 </mujocoinclude>
