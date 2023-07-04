@@ -22,103 +22,115 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
 </head>
 <style>
-  body{
+  html{
+    scroll-behavior: smooth;
+  }
+  body {
     font-family: Poppins;
   }
-  h1, h2, h6{
+
+  h1,
+  h2,
+  h6 {
     font-family: Raleway;
   }
-  table, td, th {
-  text-align:center;
-  width:14.2%;
-  padding:5px;
+
+  table,
+  td,
+  th {
+    text-align: center;
+    width: 14.2%;
+    padding: 5px;
+  }
+
+  th {
+    background: #DDEEEE;
+  }
+
+  table {
+    width: 400px;
+    border-collapse: collapse;
+  }
+  @media only screen and (max-width: 1026px) {
+    #toc {
+        display: none;
+    }
 }
-th
-{
-   background:#DDEEEE;
-}
-table {
-  width: 400px;
-  border-collapse: collapse;
-}
-#myInput {
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
+@media only screen and (min-width: 1026px) {
+    #burger {
+        display: none;
+    }
 }
 
-#myTable {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-size: 18px;
-}
+  #myInput {
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }
 
-#myTable th, #myTable td {
-  text-align: left;
-  padding: 12px;
-}
+  #myTable {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+  }
 
-#myTable tr {
-  border-bottom: 1px solid #ddd;
-}
+  #myTable th,
+  #myTable td {
+    text-align: left;
+    padding: 12px;
+  }
 
-#myTable tr.header, #myTable tr:hover {
-  background-color: #f1f1f1;
-}
+  #myTable tr {
+    border-bottom: 1px solid #ddd;
+  }
 
-.parallax {
-  /* The image used */
-  background-image: url("media/main.png");
+  #myTable tr.header,
+  #myTable tr:hover {
+    background-color: #f1f1f1;
+  }
 
-  /* Set a specific height */
-  min-height: 500px; 
+  .parallax {
+    /* The image used */
+    background-image: url("media/main.png");
 
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+    /* Set a specific height */
+    min-height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 </style>
 <div class="content" style="margin-right: 5%; margin-left: 5%; ">
 
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
+        <a role="button" class="navbar-link" id="burger" aria-label="menu" aria-expanded="True">
+          Table of contents 
+        </a>
     </div>
-    <div class="navbar-menu">
+    <div class="navbar-menu" id="nav-links">
       <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
+          <a class="navbar-link" id="toc">
             Table of contents
           </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#title">
-              Title
+            <a class="navbar-item" href="#hierarchy">
+              Hierarchy
             </a>
-            <a class="navbar-item" href="#videos">
-              Videos
+            <a class="navbar-item" href="#datacomposition">
+            Data Composition
             </a>
-            <a class="navbar-item" href="#abstract">
-              Abstract
-            </a>
-            <a class="navbar-item" href="#overview">
-              Overview
-            </a>
-            <a class="navbar-item" href="#results">
-              Results
-            </a>
-            <a class="navbar-item" href="">
-              Additional Experiments
+            <a class="navbar-item" href="#data">
+              Data
             </a>
           </div>
         </div>
@@ -126,7 +138,7 @@ table {
     </div>
   </nav>
 
-  <h1 >RoboSet Dataset</h1>
+  <h1>RoboSet Dataset</h1>
 
   <p>
     Introducing RoboSet, a large-scale real-world multi-task dataset collected across a range of everyday household
@@ -135,7 +147,7 @@ table {
     to induce visual diversity i n the data.
   </p>
 
-  <h2 >
+  <h2 id="hierarchy">
     Hierarchy of data
   </h2>
   <ul>
@@ -153,7 +165,7 @@ table {
     </li>
   </ul>
 
-  <h2 >
+  <h2 id="datacomposition">
     Dataset composition
   </h2>
 
@@ -199,12 +211,12 @@ table {
       </ul>
     </li>
   </ol>
-  <h2>
+  <h2 id="data">
     Data
   </h2>
   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by task name" title="Type task names">
   <table class="table is-hoverable is-fullwidth" id="myTable">
-    <thead>
+    <thead style="background-color:#ddd">
       <th>Activity</th>
       <th>Task</th>
       <th>Scene</th>
@@ -230,7 +242,8 @@ table {
           <img src="media/baking_prep_open_drawer_scene_1.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -250,7 +263,8 @@ table {
           <img src="media/baking_prep_open_drawer_scene_4.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -270,7 +284,8 @@ table {
           <img src="media/baking_prep_pick_butter_scene_1.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -290,7 +305,8 @@ table {
           <img src="media/baking_prep_pick_butter_scene_4.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -310,7 +326,8 @@ table {
           <img src="media/baking_prep_place_butter_scene_1.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -330,7 +347,8 @@ table {
           <img src="media/baking_prep_place_butter_scene_4.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -350,7 +368,8 @@ table {
           <img src="media/baking_prep_close_drawer_scene_1.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -370,7 +389,8 @@ table {
           <img src="media/baking_prep_close_drawer_scene_4.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <!--
@@ -393,7 +413,8 @@ table {
           <img src="media/clean_kitchen_pick_mug_scene_3.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -413,7 +434,8 @@ table {
           <img src="media/clean_kitchen_cap_lid_scene_3.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -433,7 +455,8 @@ table {
           <img src="media/clean_kitchen_close_drawer_scene_3.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -453,7 +476,8 @@ table {
           <img src="media/clean_kitchen_close_oven_scene_3.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -473,7 +497,8 @@ table {
           <img src="media/clean_kitchen_pick_towel_scene_3.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -493,7 +518,8 @@ table {
           <img src="media/clean_kitchen_wipe_towel_scene_3.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <!--
@@ -516,7 +542,8 @@ table {
           <img src="media/heat_soup_open_oven_scene_2.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -536,7 +563,8 @@ table {
           <img src="media/heat_soup_open_oven_scene_4.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -556,7 +584,8 @@ table {
           <img src="media/heat_soup_pick_bowl_scene_2.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -576,7 +605,8 @@ table {
           <img src="media/heat_soup_pick_bowl_scene_4.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -596,7 +626,8 @@ table {
           <img src="media/heat_soup_slide_in_scene_2.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -616,7 +647,8 @@ table {
           <img src="media/heat_soup_slide_in_scene_4.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -636,7 +668,8 @@ table {
           <img src="media/heat_soup_close_oven_scene_2.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -656,7 +689,8 @@ table {
           <img src="media/heat_soup_close_oven_scene_2.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <!--
@@ -667,7 +701,7 @@ table {
           Make Tea
         </th>
         <td>
-          Uncap Lid 
+          Uncap Lid
         </td>
         <td>
           Scene 2
@@ -679,7 +713,8 @@ table {
           <img src="media/making_tea_uncap_lid_scene_2.gif" alt="">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -699,7 +734,8 @@ table {
           <img src="media/making_tea_place_lid_scene_2.gif" alt="">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -719,7 +755,8 @@ table {
           <img src="media/making_tea_pick_tea_scene_2.gif" alt="">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -739,7 +776,8 @@ table {
           <img src="media/making_tea_place_tea_scene_2.gif" alt="">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -759,7 +797,8 @@ table {
           <img src="media/making_tea_pick_lid_scene_2.gif" alt="">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -779,7 +818,8 @@ table {
           <img src="media/making_tea_cap_lid_scene_2.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <!--
@@ -802,7 +842,8 @@ table {
           <img src="media/making_toast_plunge_toaster_scene_2.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -822,7 +863,8 @@ table {
           <img src="media/making_toast_pick_toast_scene_1.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -842,7 +884,8 @@ table {
           <img src="media/making_toast_place_toaster_scene_1.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
 
@@ -866,7 +909,8 @@ table {
           <img src="media/serve_soup_open_oven_scene_2.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -886,7 +930,8 @@ table {
           <img src="media/serve_soup_slide_out_scene_2.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -906,7 +951,8 @@ table {
           <img src="media/serve_soup_place_bowl_scene_2.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -926,7 +972,8 @@ table {
           <img src="media/serve_soup_close_oven_scene_2.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <!--
@@ -949,7 +996,8 @@ table {
           <img src="media/stow_bowl_open_drawer_scene_3.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -969,7 +1017,8 @@ table {
           <img src="media/stow_bowl_pick_bowl_scene_3.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -989,7 +1038,8 @@ table {
           <img src="media/stow_bowl_place_bowl_scene_3.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
       <tr>
@@ -1009,31 +1059,37 @@ table {
           <img src="media/stow_bowl_close_drawer_scene_3.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download now</a>
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+            now</a>
         </td>
       </tr>
     </tbody>
   </table>
 
-<script>
-  function myFunction() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
+  <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
         }
-      }       
+      }
     }
-  }
+    const burgerIcon = document.querySelector('#burger');
+    const navbarMenu = document.querySelector('#nav-links');
+    burgerIcon.addEventListener('click', () => {
+      navbarMenu.classList.toggle('is-active');
+    });
   </script>
 
 </html>
