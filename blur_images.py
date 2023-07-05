@@ -5,7 +5,16 @@ import numpy as np
 from glob import glob
 from tqdm import tqdm
 import os
-dir_path = "/checkpoint/jayvakil/robopenv04/RoboSet/baking/baking_close_oven_scene_2/"
+import skvideo.io
+dir_path = 
+
+left = [210, 20]
+top = [400,30]
+radius = 35
+intensity = 9
+
+def flatten(l):
+    return [item for sublist in l for item in sublist]
 
 for path in glob(dir_path + "*.h5"):
     filename=path.split('/')[-1][:-3] + "_blurred.h5"
@@ -13,16 +22,11 @@ for path in glob(dir_path + "*.h5"):
     
     rgb_left = []
     rgb_top = []
-
-    left = [210, 20]
-    top = [400,30]
-    
+    rgb_left_frames = []
     cams = {}
-    
-    radius = 35
-    intensity = 9
 
-    top_coords = [top]
+    #Keep appending 
+    top_coords = [top] 
     left_coords = [left]
 
     horizon = h5['Trial0/data/time'].shape[0]
@@ -43,6 +47,7 @@ for path in glob(dir_path + "*.h5"):
         cams['ctrl_ee']   = h5[f'{value}/data/ctrl_ee']
         cams['rgb_right'] = h5[f'{value}/data/rgb_right']
         cams['rgb_wrist'] = h5[f'{value}/data/rgb_wrist']
+        
         for i in tqdm(range(horizon)):
             img_left = h5[f'{value}/data/rgb_left'][i]
             img_top =  h5[f'{value}/data/rgb_top'][i]
@@ -64,7 +69,14 @@ for path in glob(dir_path + "*.h5"):
         cams['rgb_left'] = np.asarray(rgb_left)
         cams['rgb_top'] = np.asarray(rgb_top)
         
+        rgb_left_frames.append(np.dstack((rgb_left, rgb_top)))
+        
         trace.append_datum_post_process(group_key=f'{value}', dataset_key='data', dataset_val=cams)
+        
         rgb_left = []
         rgb_top = []
+    
+    left_frames = flatten(rgb_left_frames)
+    skvideo.io.vwrite(f"{filename}_rgb_left.mp4", np.asarray(left_frames))
+    print(f"Saving {filename}.mp4... size: {np.asarray(left_frames).shape}")
     trace.save(filename, verify_length=True)
